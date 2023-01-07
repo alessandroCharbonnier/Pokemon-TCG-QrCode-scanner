@@ -23,7 +23,10 @@ class QR_Code_Scanner:
                 break
 
             # Display the resulting frame
-            data, points, _ = self.decoder.detectAndDecode(img) # size 250 * 250 np.array
+            try:
+                data, points, _ = self.decoder.detectAndDecode(img) 
+            except Exception as e:
+                continue# size 250 * 250 np.array
             if points is not None:
                 for point in points:
                     for i in range(len(point)):
